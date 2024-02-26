@@ -12,31 +12,58 @@
         <h1>Calcular</h1>
     </div>
     <div class="body">
-        <form action="/primeiro" METHOD="post" >
+        <form METHOD="post" >
             <fieldset>
-                <legend>Calculadora</legend>
+                <legend>Calculadora Sem Ajax</legend>
                 <div class="form" >
                     <div class="row">
-                        <label for="">A</label>
+                        <label for="">Valor 1</label>
                         <input type="text" name = "cpValor1">
-                        <label for="">A</label>
+                        <label for="">Valor 2</label>
                         <input type="text" name = "cpValor2">
                         <label for="">
-                            <button>
-                                OK
+                            <button name = "btn" value = "+">
+                                +
+                            </button>
+                            <button name = "btn" value = "-">
+                                -
                             </button>
                         </label>
                     </div>
                 </div>
             </fieldset>
         </form>
+
+        <form action="/primeiro" METHOD="post" >
+            <fieldset>
+                <legend>Calculadora com Ajax</legend>
+                <div class="form" >
+                    <div class="row ajax">
+                        <label for="">Valor 1</label>
+                        <input type="text" name = "cpValor1">
+                        <label for="">Valor 2</label>
+                        <input type="text" name = "cpValor2">
+                        <label for="">
+                            <button name = "btn" value = "+">
+                                +
+                            </button>
+                            <button name = "btn" value = "-">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
     </div>
 
     <div class="footer">
         <h2>footer</h2>
     </div>
 </div>
-    <script src= "./script.js"></script>
+    <script src= "../js/script.js"></script>
+    <script scr="../js/ajax.js"></script>
 </body>
 
 
