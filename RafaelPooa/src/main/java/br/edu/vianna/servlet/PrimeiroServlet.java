@@ -54,10 +54,14 @@ public class PrimeiroServlet extends HttpServlet {
                     "        <h2>footer</h2>\n" +
                     "    </div>\n" +
                     "</div>\n" +
-                    "    <script src= \"./script.js\"></script>\n" +
+
+                    "<script src= \"../js/script.js\"></script>\n" +
+                    "<script src=\"../js/ajax.js\"></script>"+
+
                     "</body>\n" +
                     "\n" +
                     "\n" +
+
                     "</html>\n";
             resp.getWriter().println(html);
         }catch (IOException e){
