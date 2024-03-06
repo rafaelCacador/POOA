@@ -1,6 +1,7 @@
 package br.edu.vianna.servlet;
 
 import br.edu.vianna.model.Calculadora;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,15 +9,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-@WebServlet("terceiro")
-public class TerceiroServlet extends HttpServlet {
+
+@WebServlet("quarto")
+public class QuartoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resposta(req, resp);
+        super.doGet(req, resp);
     }
 
-    private void resposta(HttpServletRequest req, HttpServletResponse resp) {
+    private void resposta(HttpServletRequest req, HttpServletResponse resp){
+        //usando forward
         try {
             String v1 = req.getParameter("cpValor1");
             String v2 = req.getParameter("cpValor2");
@@ -27,14 +30,20 @@ public class TerceiroServlet extends HttpServlet {
             c.setValor2(Integer.parseInt(v2));
             c.setOperador(v3);
 
-            resp.sendRedirect("respostaRedirect.jsp?valor="+c.operacao() + "&nome=zezin"); //unica forma dessa forma é via GET
-        } catch (IOException e) {
+            RequestDispatcher rd = req.getRequestDispatcher("respostaForward.jsp");
+            rd.forward(req,resp);
+
+            //o forward internamente chama
+        }catch(ServletException e){
+            System.out.println("DEU RUIM");
+        }catch (IOException e) {
             System.out.println("DEU RUIM");
         }
-    }
 
+
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resposta(req, resp);
+        super.doPost(req, resp);
     }
 }

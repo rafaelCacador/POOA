@@ -11,9 +11,16 @@
     <div class="header">
         <h1>Calcular</h1>
     </div>
-
+</div>
     <div class="body">
-        <h1> A resposta é</h1>
+        <div class="bodyContainer">
+
+           <%
+            String nome =request.getParam("nome");
+
+            %>
+            <h1>Forward  %> <% out.print(nome); %> </h1>
+        </div>
     </div>
 
     <div class="footer">
