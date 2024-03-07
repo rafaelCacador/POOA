@@ -20,12 +20,12 @@ public class TerceiroServlet extends HttpServlet {
         try {
             String v1 = req.getParameter("cpValor1");
             String v2 = req.getParameter("cpValor2");
-            String v3 = req.getParameter("btn");
+            String btn = req.getParameter("btn");
 
             Calculadora c = new Calculadora();
             c.setValor1(Integer.parseInt(v1));
             c.setValor2(Integer.parseInt(v2));
-            c.setOperador(v3);
+            c.setOperador(btn);
 
             resp.sendRedirect("respostaRedirect.jsp?valor="+c.operacao() + "&nome=zezin"); //unica forma dessa forma é via GET
         } catch (IOException e) {

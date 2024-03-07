@@ -15,7 +15,7 @@ public class QuartoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        resposta(req, resp);
     }
 
     private void resposta(HttpServletRequest req, HttpServletResponse resp){
@@ -23,19 +23,27 @@ public class QuartoServlet extends HttpServlet {
         try {
             String v1 = req.getParameter("cpValor1");
             String v2 = req.getParameter("cpValor2");
-            String v3 = req.getParameter("btn");
+            String btn = req.getParameter("btn");
 
             Calculadora c = new Calculadora();
             c.setValor1(Integer.parseInt(v1));
             c.setValor2(Integer.parseInt(v2));
-            c.setOperador(v3);
+            c.setOperador(btn);
 
-            RequestDispatcher rd = req.getRequestDispatcher("respostaForward.jsp");
+//          resp.setContentType("type/plain");
+//          resp.setCharacterEncoding("ISO-8859-1");
+
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("UTF-8"); //remover caractere estranho
+
+            RequestDispatcher rd = req.getRequestDispatcher("respostaForward.jsp?nome=Zezin");
+            req.setAttribute("calc",c.operacao());
+
             rd.forward(req,resp);
 
             //o forward internamente chama
         }catch(ServletException e){
-            System.out.println("DEU RUIM");
+            System.out.println("DEU RUIM"+e.getMessage());
         }catch (IOException e) {
             System.out.println("DEU RUIM");
         }
@@ -44,6 +52,6 @@ public class QuartoServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        resposta(req, resp);
     }
 }
